@@ -34,5 +34,13 @@ async def on_ready():
     print('Bot is ready!')
     status = cycle(["Testing the bot", "placement", "Super skibidi rizz"])
 
+@bot.command()
+async def embed_test(message):
+    #if message.content.startswith('!embed_test'):
+    embedVar = discord.Embed(title="Server Info", description="The server", color=0x00ff00)
+    embedVar.add_field(name="Field1", value="hi", inline=False)
+    embedVar.add_field(name="Field2", value="hi2", inline=False)
+    await message.channel.send(embed=embedVar)
+
 # Run the bot
 bot.run(TOKEN)
