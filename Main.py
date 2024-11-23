@@ -1,13 +1,30 @@
+import os
+import random
 import discord
 from discord.ext import commands
+from discord.ext import tasks
+from discord.ext.commands import has_permissions, MissingPermissions
+from discord.utils import get
+from itertools import cycle
+import json
+import random
 
 # Replace this with your bot's token
 TOKEN = 'TOKEN'
 
 intents = discord.Intents.default()
-intents.members = True  # To detect members joining/leaving the server
+intents.members = True
+intents.typing = True
+intents.presences = True
+intents.messages = True
+intents.message_content = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents = intents)
+
+# Command: Ping
+@bot.command()
+async def ping(ctx):
+    await ctx.send('Pong!')
 
 
 # Event: Bot is ready
@@ -15,6 +32,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f'Logged in as {bot.user}!')
     print('Bot is ready!')
+    status = cycle(["Testing the bot", "placement", "Super skibidi rizz"])
 
 # Run the bot
 bot.run(TOKEN)
