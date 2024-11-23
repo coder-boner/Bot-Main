@@ -12,6 +12,7 @@ import random
 # Replace this with your bot's token
 TOKEN = 'TOKEN'
 
+#Discord Intents LEAVE ALONE IF IT WORKS
 intents = discord.Intents.default()
 intents.members = True
 intents.typing = True
@@ -34,9 +35,8 @@ async def on_ready():
     print('Bot is ready!')
     status = cycle(["Testing the bot", "placement", "Super skibidi rizz"])
 
-@bot.command()
+@bot.command() #Command to test embeds
 async def embed_test(message):
-    #if message.content.startswith('!embed_test'):
     embedVar = discord.Embed(title="Server Info", description="The server", color=0x00ff00)
     embedVar.add_field(name="Field1", value="hi", inline=False)
     embedVar.add_field(name="Field2", value="hi2", inline=False)
