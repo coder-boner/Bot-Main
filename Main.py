@@ -19,6 +19,10 @@ intents.typing = True
 intents.presences = True
 intents.messages = True
 intents.message_content = True
+intents.guilds = True
+intents.guild_messages = True
+intents.moderation = True
+intents.reactions = True
 
 bot = commands.Bot(command_prefix="!", intents = intents)
 
@@ -37,9 +41,25 @@ async def on_ready():
 
 @bot.command() #Command to test embeds
 async def embed_test(message):
-    embedVar = discord.Embed(title="Server Info", description="The server", color=0x00ff00)
-    embedVar.add_field(name="Field1", value="hi", inline=False)
-    embedVar.add_field(name="Field2", value="hi2", inline=False)
+    colour = discord.Colour.from_rgb(2, 110, 168)
+    embedVar = discord.Embed(title="Server Info", description="The Etheral Foundation Network is a server where we listen to the community and do what they want, we try to make the gaming experience as fun as possible. We do this by having multiple different game modes (Heavily Modded, Vanilla +, ect.) to let everyone have a wide range possible game modes to play. We hope you enjoy playing!", color=colour)
+    embedVar.add_field(name="**CONTACT: admin@etheralfn.com**", value="", inline=False)
+    embedVar.add_field(name="**APPLY HERE: **https://discord.com/channels/1272058561924435990/1272059372767285300", value="", inline=False)
+    embedVar.add_field(name="**READ THE RULES: **https://discord.com/channels/1272058561924435990/1272059312872624191", value="", inline=False)
+    embedVar.set_author(name="The Etheral Foundation Network", url="https://i.postimg.cc/3NK1gKVG/serverlogo.webp")
+    #embedVar.set_image(url="https://i.postimg.cc/3NK1gKVG/serverlogo.webp")
+    embedVar.add_field(name="Website", value="https://etheralfn.com/")
+    embedVar.set_thumbnail(
+        url="https://i.postimg.cc/3NK1gKVG/serverlogo.webp")
+    embedVar.set_footer(text="Made by walter")
+    await message.channel.send(embed=embedVar)
+
+    colour = discord.Colour.from_rgb(2, 110, 168)
+    embedVar = discord.Embed(title="Management:", description=" ", color=colour)
+    embedVar.add_field(name="NETWORK OWNER", value="The <@&1272059235223601244> manages everything with the server and finances the server to expand it. They also find developers and manage all staff.", inline=False)
+    embedVar.add_field(name="NETWORK CO OWNER", value="The <@&1272059236599201803> helps the Network Owner with managing and devloping the server.")
+    embedVar.add_field(name="DISCORD DIRECTOR", value="The <@&1307877759871225997> manages and develops the discord server and helps out with events ect.", inline=False)
+    embedVar.add_field(name="SCP:SL DIRECTOR", value="The <@&1307879130427293757> manages and devlops the SCP:SL Servers and does events on them")
     await message.channel.send(embed=embedVar)
 
 # Run the bot
